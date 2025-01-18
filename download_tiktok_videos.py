@@ -2,12 +2,12 @@ import os
 import re
 import requests
 
-# File path to the Post.txt
-file_path = 'Post.txt'
+# Get the current directory where the script is located
+current_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Directory to save downloaded videos
-output_dir = '/mnt/mediadrive/backups/tiktoks'
-os.makedirs(output_dir, exist_ok=True)  # Ensure the directory exists
+# Directory to save downloaded videos (same as script location)
+output_dir = current_dir
+print(f"Videos will be saved in: {output_dir}")
 
 def download_video(video_url, output_path):
     try:
@@ -23,11 +23,14 @@ def download_video(video_url, output_path):
     except requests.exceptions.RequestException as e:
         print(f"Failed to download {video_url}: {e}")
 
-# Read and parse the file
+# File path to the Posts.txt (assumes Posts.txt is in the same folder as the script)
+file_path = os.path.join(current_dir, 'Posts.txt')
+
+# Read and parse the Posts.txt file
 with open(file_path, 'r') as f:
     content = f.read()
 
-# Extract full video links using regex
+# Extract video links using regex
 video_links = re.findall(r'(https://video-useast5-download.tiktokv.us[^\s]+)', content)
 
 # Download each video
