@@ -43,9 +43,9 @@ A simple Python script to download your TikTok videos using the data from your T
 
 1. Open a terminal or command prompt in the folder containing the script.
 2. Run the following command:
-   BASH
+   ```
    python3 download_tiktok_videos.py
-   /BASH
+   ```
 3. The videos will be saved to the default output folder (`tiktok_videos`) or a specified directory based on the script configuration.
 
 ---
